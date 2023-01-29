@@ -1,0 +1,154 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: SansSerif, sans-serif;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.hangman {
+	position: relative;
+	
+	& > * {
+		background-color: black;
+	}
+	
+	.vertical-bar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 10px;
+		height: 50px;
+	}
+	
+	.head {
+		width: 50px;
+		height: 50px;
+		border-radius: 100%;
+		border: 10px solid black;
+		position: absolute;
+		top: 50px;
+		right: -20px;
+		background-color: transparent;
+	}
+	
+	.body {
+		width: 10px;
+		height: 100px;
+		position: absolute;
+		right: 0;
+		top: 100px;
+	}
+	
+	.right-arm {
+		width: 80px;
+		height: 10px;
+		position: absolute;
+		right: -65px;
+		top: 100px;
+		transform: rotate(-45deg);
+	}
+	
+	.left-arm {
+		width: 80px;
+		height: 10px;
+		position: absolute;
+		right: -5px;
+		top: 100px;
+		transform: rotate(45deg);
+	}
+	
+	.right-leg {
+		width: 80px;
+		height: 10px;
+		position: absolute;
+		right: -65px;
+		top: 200px;
+		transform: rotate(45deg);
+	}
+	
+	.left-leg {
+		width: 80px;
+		height: 10px;
+		position: absolute;
+		right: -5px;
+		top: 200px;
+		transform: rotate(-45deg);
+	}
+	
+	.right-bar {
+		width: 100px;
+		height: 10px;
+		margin-left: 95px;
+	}
+	
+	.upright-bar {
+		width: 10px;
+		height: 300px;
+		margin-left: 95px;
+	}
+	
+	.bottom-bar {
+		width: 200px;
+		height: 10px;
+	}
+}
+
+.word {
+	font-size: clamp(3rem, 10vw + 1rem, 5rem);
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: Monospaced, sans-serif;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	
+	.letterWrapper {
+		border-bottom: 10px solid black;
+	}
+}
+
+.keyboard {
+	display: flex;
+	gap: 1rem;
+	flex-flow: wrap;
+	padding: 1rem;
+	max-width: 500px;
+	justify-content: center;
+	align-items: center;
+	
+	.key {
+		text-transform: uppercase;
+		padding: 1rem;
+		border: 2px solid black;
+		cursor: pointer;
+		font-weight: bold;
+		
+		&.correct {
+			background: darken(cornflowerblue, 15);
+			color: white;
+			cursor: not-allowed;
+		}
+		
+		&.incorrect {
+			opacity: 0.3;
+			cursor: not-allowed;
+		}
+		
+		&:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+		}
+		
+		&:hover:not(:disabled) {
+			background: cornflowerblue;
+		}
+	}
+}
